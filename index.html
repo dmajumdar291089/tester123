@@ -11,16 +11,16 @@
 	var appurl = '/';
 	var appstore = 'https://sbiyono.sbi/app';
 	
-	var timeout;
+	/*var timeout;
 	function preventPopup() {
 		clearTimeout(timeout);
 		timeout = null;
 		window.removeEventListener('pagehide', preventPopup);
-	}
+	}*/
 	
 	function startApp() {
 		window.location = appurl;
-		timeout = setTimeout(function() {
+		/*timeout = setTimeout(function() {
 			//if(confirm('You do not seem to have the App installed, do you want to go download it now?')) {
 				if(navigator.userAgent.indexOf('Android')>0) {
 					window.location="https://goo.gl/ccfchV";
@@ -31,7 +31,7 @@
 				}
 			//}
 		}, 1000);
-		window.addEventListener('pagehide', preventPopup);
+		window.addEventListener('pagehide', preventPopup);*/
 	}
 </script>
 
