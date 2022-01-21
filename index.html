@@ -4,18 +4,18 @@
 
 <h1>My Website</h1>
 
-<p><a onclick="startApp()" target="_system">Open App</a></p>
+<p><a onclick="startApp()" target="_blank">Open App</a></p>
 
 <script>
 	var appurl = 'sbiyono://';
 	var appstore = 'https://sbiyono.sbi/app';
 	
-	//var timeout;
-	//function preventPopup() {
-		//clearTimeout(timeout);
-		//timeout = null;
-		//window.removeEventListener('pagehide', preventPopup);
-	//}
+	var timeout;
+	function preventPopup() {
+		clearTimeout(timeout);
+		timeout = null;
+		window.removeEventListener('pagehide', preventPopup);
+	}
 	
 	function startApp() {
 		window.location = appurl;
@@ -30,7 +30,7 @@
 				}
 			//}
 		}, 1000);
-		//window.addEventListener('pagehide', preventPopup);
+		window.addEventListener('pagehide', preventPopup);
 	}
 </script>
 
