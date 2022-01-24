@@ -20,8 +20,25 @@
 	}*/
 	
 	function startApp() {
-		window.location = appurl;
-		/*timeout = setTimeout(function() {
+		$.ajax(appurl)
+  			.done(function() {
+    				// done() is called on any 200 response codes (200, 201, etc)
+    				window.location = appurl;
+  			})
+  			.fail(function() {
+    				// fail() is called on any 400 or 500 response codes (400, 401, 404, 500, etc)
+    				if(navigator.userAgent.indexOf('Android')>0) {
+					window.location="https://goo.gl/ccfchV";
+				} else if(navigator.userAgent.indexOf('iPhone')>0) {
+					window.location="https://goo.gl/X6WDiX";
+				} else {
+					document.location = appstore;
+				}
+  			}
+		);
+		
+		/*window.location = appurl;
+		timeout = setTimeout(function() {
 			//if(confirm('You do not seem to have the App installed, do you want to go download it now?')) {
 				if(navigator.userAgent.indexOf('Android')>0) {
 					window.location="https://goo.gl/ccfchV";
