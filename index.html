@@ -20,8 +20,21 @@
 	}*/
 	
 	function startApp() {
-		window.location = appurl;
-		/*timeout = setTimeout(function() {
+		var respCode = httpGet(appurl);
+		if (respCode == 200) {
+			window.location = appurl;
+		} else {
+			if(navigator.userAgent.indexOf('Android')>0) {
+				window.location="https://goo.gl/ccfchV";
+			} else if(navigator.userAgent.indexOf('iPhone')>0) {
+				window.location="https://goo.gl/X6WDiX";
+			} else {
+				document.location = appstore;
+			}
+		}
+		
+		/*window.location = appurl;
+		timeout = setTimeout(function() {
 			//if(confirm('You do not seem to have the App installed, do you want to go download it now?')) {
 				if(navigator.userAgent.indexOf('Android')>0) {
 					window.location="https://goo.gl/ccfchV";
@@ -33,6 +46,13 @@
 			//}
 		}, 1000);
 		window.addEventListener('pagehide', preventPopup);*/
+	}
+	
+	function httpGet(theUrl) {
+    		var xmlHttp = new XMLHttpRequest();
+    		xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+    		xmlHttp.send( null );
+    		return xmlHttp.status;
 	}
 </script>
 
